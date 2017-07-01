@@ -1,0 +1,275 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "This is a sample of a simple RESTFul JavaEE server.",
+    "version": "1.0.0",
+		"title": "Addressbook",
+		"termsOfService": "http://swagger.io/terms/",
+		"contact": {
+			"email": "apiteam@Addressbook.io"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+	"host": "localhost:8080",
+	"basePath": "/javaee7-angular/resources",
+	"tags": [{
+		"name": "person",
+		"description": "Everything about the Persons",
+		"externalDocs": {
+			"description": "Find out more",
+			"url": "http://swagger.io"
+		}
+	}, {
+		"name": "user",
+		"description": "Operations about user",
+		"externalDocs": {
+			"description": "Find out more about our addressbook",
+			"url": "http://swagger.io"
+		}
+	}],
+	"schemes": ["http"],
+	"paths": {
+		"/persons": {
+      "get": {
+				"tags": ["person"],
+				"summary": "Get all persons in the addressbook",
+				"description": "",
+				"operationId": "getAllPersons",
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"405": {
+						"description": "Invalid input"
+					}
+				},
+				"security": [{
+					"personaddressbook_auth": ["read:persons"]
+				}]
+			},
+			"post": {
+				"tags": ["person"],
+				"summary": "Add a new person to the addressbook",
+				"description": "",
+				"operationId": "addPerson",
+        "consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Person object that needs to be added to the addressbook",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/Person"
+					}
+				}],
+				"responses": {
+					"405": {
+						"description": "Invalid input"
+					}
+				},
+				"security": [{
+					"personaddressbook_auth": ["write:persons", "read:persons"]
+				}]
+			},
+			"put": {
+				"tags": ["person"],
+				"summary": "Update an existing person",
+				"description": "",
+				"operationId": "updatePerson",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Person object that needs to be added to the addressbook",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/Person"
+					}
+				}],
+				"responses": {
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "Person not found"
+					},
+					"405": {
+						"description": "Validation exception"
+					}
+				},
+				"security": [{
+					"personaddressbook_auth": ["write:persons", "read:persons"]
+				}]
+			}
+		},
+		"/persons/{id}": {
+			"get": {
+				"tags": ["person"],
+				"summary": "Find person by id",
+				"description": "Returns a single person",
+				"operationId": "getPersonByName",
+        "produces": ["application/json"],
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "ID of person to return",
+					"required": true,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$ref": "#/definitions/Person"
+						}
+					},
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "Person not found"
+					}
+				},
+				"security": [{
+					"api_key": []
+				}]
+			},
+			"post": {
+				"tags": ["person"],
+				"summary": "Updates a person in the addressbook with form data",
+				"description": "",
+				"operationId": "updatePersonWithForm",
+				"consumes": ["application/json"],
+        "produces": ["application/json"],
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "ID of person that needs to be updated",
+					"required": true,
+					"type": "integer",
+					"format": "int64"
+				}, {
+					"name": "name",
+					"in": "formData",
+					"description": "Updated name of the person",
+					"required": false,
+					"type": "string"
+				}, {
+					"name": "description",
+					"in": "formData",
+					"description": "Updated description of the person",
+					"required": false,
+					"type": "string"
+				}, {
+					"name": "imageUrl",
+					"in": "formData",
+					"description": "Updated imageUrl of the person",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"405": {
+						"description": "Invalid input"
+					}
+				},
+				"security": [{
+					"personaddressbook_auth": ["write:persons", "read:persons"]
+				}]
+			},
+			"delete": {
+				"tags": ["person"],
+				"summary": "Deletes a person",
+				"description": "",
+				"operationId": "deletePerson",
+				"produces": ["application/xml", "application/json"],
+				"parameters": [{
+					"name": "api_key",
+					"in": "header",
+					"required": false,
+					"type": "string"
+				}, {
+					"name": "personId",
+					"in": "path",
+					"description": "Person id to delete",
+					"required": true,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "Person not found"
+					}
+				},
+				"security": [{
+					"personaddressbook_auth": ["write:persons", "read:persons"]
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"personaddressbook_auth": {
+			"type": "oauth2",
+			"authorizationUrl": "http://personaddressbook.swagger.io/oauth/dialog",
+			"flow": "implicit",
+			"scopes": {
+				"write:persons": "modify persons in your account",
+				"read:persons": "read your persons"
+			}
+		},
+		"api_key": {
+			"type": "apiKey",
+			"name": "api_key",
+			"in": "header"
+		}
+	},
+	"definitions": {
+		"Person": {
+			"type": "object",
+			"required": ["name", "description"],
+			"properties": {
+        "id": {
+					"type": "int64"
+				},
+        "name": {
+					"type": "string"
+				},
+        "description": {
+					"type": "string"
+				},
+        "imageUrl": {
+					"type": "string"
+				},
+			},
+			"xml": {
+				"name": "Person"
+			}
+		},
+		"ApiResponse": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"type": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+}
