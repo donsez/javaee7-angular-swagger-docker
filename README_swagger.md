@@ -22,3 +22,20 @@ The following plugin must be added into the pom.xml of javaee7-angular project i
 
 And copy the new file in the directory
 cp ../javaee7-angular/target/jaxrs-analyzer/swagger.json .
+
+Then, you should add the following statements into the swagger.json file
+
+	"info": {
+		"description": "This is a sample of a simple RESTFul JavaEE server.",
+    "version": "1.0.0",
+		"title": "Addressbook",
+		"termsOfService": "http://addressbook.io/terms/",
+		"contact": {
+			"email": "apiteam@addressbook.io"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+          "host": "localhost:8080",
