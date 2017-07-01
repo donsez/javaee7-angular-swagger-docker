@@ -41,3 +41,5 @@ Then, you should add the following statements into the swagger.json file
 	},
         "host": "localhost:8080",
         ...
+
+For HTML/PDF documentation, use https://github.com/asciidoctor/asciidoctor
