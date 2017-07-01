@@ -15,3 +15,10 @@ First, install Java (JDK), Maven and Docker.
 
 ./build.sh
 ./curl.sh
+
+Exercices
+=========
+
+* Gatlings
+* Hawkular
+* Opentracing
