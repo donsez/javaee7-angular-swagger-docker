@@ -13,8 +13,8 @@ Usage
 
 First, install Java (JDK), Maven and Docker.
 
-./build.sh
-./curl.sh
+ ./build.sh
+ ./curl.sh
 
 Exercices
 =========
