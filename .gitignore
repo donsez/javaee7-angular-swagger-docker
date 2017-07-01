@@ -1,4 +1,4 @@
 swagger-ui
 *.war
-gatling/results
+gatlings/results
 
