@@ -22,3 +22,4 @@ Exercices
 * Gatlings
 * Hawkular
 * Opentracing
+* REST Testing with http://rest-assured.io/
