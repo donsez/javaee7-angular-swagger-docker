@@ -26,5 +26,5 @@ Exercices
 * HA Database backend (Replicated MySQL/MariaDB)
 * Opentracing
 * Distributed tracing with Zipkin
-* Load Balancing and SSL Termination with HAProxy
+* Load Balancing and SSL Termination with HAProxy https://hub.docker.com/_/haproxy/
 * Firewall with UFW
