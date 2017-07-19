@@ -25,6 +25,6 @@ Exercices
 * External Database (MySQL/MariaDB container)
 * HA Database backend (Replicated MySQL/MariaDB)
 * Opentracing
-* Distributed tracing with Zipkin
+* Distributed tracing with Zipkin https://github.com/openzipkin/zipkin
 * Load Balancing and SSL Termination with HAProxy https://hub.docker.com/_/haproxy/
-* Firewall with UFW
+* Firewall with UFW https://help.ubuntu.com/community/UFW and https://help.ubuntu.com/community/Gufw
