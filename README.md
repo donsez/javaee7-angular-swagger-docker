@@ -22,6 +22,9 @@ Exercices
 * REST Testing with REST Assured http://rest-assured.io/
 * Load injection with Gatlings
 * Monitoring with Hawkular
+* External Database (MySQL/MariaDB container)
+* HA Database backend (Replicated MySQL/MariaDB)
 * Opentracing
 * Distributed tracing with Zipkin
 * Load Balancing and SSL Termination with HAProxy
+* Firewall with UFW
