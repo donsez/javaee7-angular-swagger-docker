@@ -19,7 +19,7 @@ open http://gatling.io/docs/current/general/simulation_setup/
 mkdir gatlings
 cd gatlings
 
-INSTANCE=1
+INSTANCE_ID=1
 
 WORKDIR=$(pwd)
 #docker run -it --rm -v $WORKDIR/conf:/opt/gatling/conf \
@@ -30,7 +30,7 @@ WORKDIR=$(pwd)
 
 mkdir results
 
-docker run --name gatling-${INSTANCE} -it --rm \
+docker run --name gatling-${INSTANCE_ID} -it --rm \
   -v $WORKDIR/results:/opt/gatling/results \
   denvazh/gatling
 
