@@ -6,7 +6,7 @@ Description
 The Wildfly JavaEE7 serves :
 * a RESTFul service
 * a simple AngularJS application
-* and the Swagger UI
+* the Swagger UI and an 1-page HTML documentation
 
 Usage
 =====
@@ -19,7 +19,9 @@ First, install Java (JDK), Maven and Docker.
 Exercices
 =========
 
-* Gatlings
-* Hawkular
+* REST Testing with REST Assured http://rest-assured.io/
+* Load injection with Gatlings
+* Monitoring with Hawkular
 * Opentracing
-* REST Testing with http://rest-assured.io/
+* Distributed tracing with Zipkin
+* Load Balancing and SSL Termination with HAProxy
