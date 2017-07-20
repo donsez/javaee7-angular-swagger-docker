@@ -47,7 +47,7 @@ Then, you should add the following statements into the swagger.json file
 
 # Generate the static documentation (HTML)
 sudo npm install -g yamljs
-sudo npm install -g bootprint
+sudo npm install -g bootprint bootprint-openapi
 sudo npm install -g html-inline
 
 mkdir -p target
